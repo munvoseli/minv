@@ -29,9 +29,11 @@ u32 mmi_mnv_if(u32 n) {
 }
 
 u32 mmi_euler(u32 n) {
-	int a = n;
-	int b = n;
-	for (int i = 0; a != 1 && i < 32; i++) {
+	u32 a = n;
+	u32 b = n;
+	//for (; a != 1;) {
+	for (int i = 0; i < 32; ++i) {
+	//for (int i = 0; i < 32 && a != 1; ++i) {
 		a *= a;
 		b *= a;
 	}
