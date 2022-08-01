@@ -4,7 +4,7 @@ The mnv algorithms are a thing.
 
 I assume the Euler algorithm is how it's implemented elsewhere, but I did re-create it from Euler's theorem with the totient function.
 
-Extended Euclidian is also there now.
+There are two Extended Euclidian algorithms present.  Both are from Wikipedia, and I had no part in designing them.
 
 <hr/>
 
