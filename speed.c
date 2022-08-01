@@ -31,7 +31,7 @@ u32 mmi_mnv_if(u32 n) {
 u32 mmi_euler(u32 n) {
 	int a = n;
 	int b = n;
-	while (a != 1) {
+	for (int i = 0; a != 1 && i < 32; i++) {
 		a *= a;
 		b *= a;
 	}
@@ -49,6 +49,11 @@ void test_val(u32 n) {
 	printf("%8x extended euclidian\n", mmi_exteucl(n));
 }
 
+#define TEST_FUNC(func, str) start = clock();\
+for (int i = 0; i < TRIALS; ++i) *pog = func(2 * i + 1);\
+printf("%d ms " str "\n", (clock() - start) * 1000 / CLOCKS_PER_SEC);
+
+
 int main(int argc, char** argv) {
 	clock_t start;
 	test_val(13);
@@ -56,21 +61,13 @@ int main(int argc, char** argv) {
 	test_val(4095);
 	test_val(4097);
 	test_val(0xc4ec4ec5);
+	u32 gers;
+	volatile u32 *pog = &gers;
 
 	for (int j = 0; j < 3; ++j) {
-
-	start = clock();
-	for (int i = 0; i < TRIALS; ++i) mmi_mnv_noif(2 * i + 1);
-	printf("%d ms mnv noif\n", (clock() - start) * 1000 / CLOCKS_PER_SEC);
-
-	start = clock();
-	for (int i = 0; i < TRIALS; ++i) mmi_mnv_if(2 * i + 1);
-	printf("%d ms mnv if\n", (clock() - start) * 1000 / CLOCKS_PER_SEC);
-
-	start = clock();
-	for (int i = 0; i < TRIALS; ++i) mmi_euler(2 * i + 1);
-	printf("%d ms eul\n", (clock() - start) * 1000 / CLOCKS_PER_SEC);
-
+		TEST_FUNC(mmi_mnv_noif, "mnv noif")
+		TEST_FUNC(mmi_mnv_if, "mnv if")
+		TEST_FUNC(mmi_euler, "euler")
 	}
 
 	return 0;
