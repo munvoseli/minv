@@ -43,15 +43,22 @@ u32 mmi_exteucl(u32 n) {
 }
 
 void test_val(u32 n) {
-	printf("%x mnv noif\n", mmi_mnv_noif(n));
-	printf("%x mnv if\n", mmi_mnv_if(n));
-	printf("%x euler\n", mmi_euler(n));
-	printf("%x extended euclidian\n", mmi_exteucl(n));
+	printf("%8x mnv noif\n", mmi_mnv_noif(n));
+	printf("%8x mnv if\n", mmi_mnv_if(n));
+	printf("%8x euler\n", mmi_euler(n));
+	printf("%8x extended euclidian\n", mmi_exteucl(n));
 }
 
 int main(int argc, char** argv) {
 	clock_t start;
+	test_val(13);
+	test_val(15);
+	test_val(4095);
+	test_val(4097);
+	test_val(0xc4ec4ec5);
+
 	for (int j = 0; j < 3; ++j) {
+
 	start = clock();
 	for (int i = 0; i < TRIALS; ++i) mmi_mnv_noif(2 * i + 1);
 	printf("%d ms mnv noif\n", (clock() - start) * 1000 / CLOCKS_PER_SEC);
@@ -66,6 +73,5 @@ int main(int argc, char** argv) {
 
 	}
 
-	test_val(15);
 	return 0;
 }
