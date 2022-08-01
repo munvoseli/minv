@@ -2,7 +2,7 @@
 #include <time.h>
 
 typedef unsigned int u32;
-#define TRIALS 100000000
+#define TRIALS 10000000
 
 u32 mmi_mnv_noif(u32 n) {
 	int s = n;
@@ -31,10 +31,9 @@ u32 mmi_mnv_if(u32 n) {
 u32 mmi_euler(u32 n) {
 	int a = n;
 	int b = n;
-	int i = 0;
-	while (a != 1 && i < 32) { // i condition will never be reached
+	while (a != 1) {
 		a *= a;
-		b *= a; ++i; // only for things
+		b *= a;
 	}
 	return b;
 }
