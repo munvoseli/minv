@@ -7,8 +7,8 @@ typedef unsigned int u32;
 u32 mmi_mnv_noif(u32 n) {
 	int s = n;
 	int m = 1;
-	for (int i = 1; i < 32; ++i) {
-		int a = s & (1 << i);
+	for (int i = 1; i; i <<= 1) {
+		int a = s & i;
 		s += n * a;
 		m |= a;
 	}
