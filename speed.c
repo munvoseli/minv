@@ -18,9 +18,10 @@ u32 mmi_mnv_boi(u32 n) {
 	u32 j = 1;
 	for (int i = 0; i < BITS; ++i) {
 		j <<= 1;
-		if (((m * n) & (2 * j - 1)) != 1) {
-			m |= j;
-		}
+		m |= (m * n) & j;
+//		if (((m * n) & (2 * j - 1)) != 1) {
+//			m |= j;
+//		}
 	}
 	return m;
 }

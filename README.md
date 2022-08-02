@@ -2,7 +2,7 @@ comparison of multiplicative inverses for odd numbers in mod 2<sup>n</sup>
 
 The mnv if and noif algorithms are similar to each other.  It's just that one does things without the branch.
 
-The mnv boi algorithm tried.
+The mnv boi algorithm tried very much, but could not beat some other things.
 
 I assume the Euler algorithm is how it's implemented elsewhere, but I did re-create it from Euler's theorem with the totient function.
 
